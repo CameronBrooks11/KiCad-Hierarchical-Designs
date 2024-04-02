@@ -1,0 +1,68 @@
+(kicad_sch (version 20211123) (generator eeschema)
+
+  (uuid a514d0cb-8780-4373-a3a7-238c58fb76be)
+
+  (paper "A4")
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 127 63.5) (size 36.83 27.94) (fields_autoplaced)
+    (stroke (width 0) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid 00000000-0000-0000-0000-00005fe1f0a8)
+    (property "Sheet name" "Sheet5FE1F0A7" (id 0) (at 127 62.7884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "../subs/MT25QL128ABA1EW9.kicad_sch" (id 1) (at 127 92.0246 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (pin "VCC" input (at 127 66.04 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 89112dfe-27c6-4333-b047-88b71fd17bf1)
+    )
+    (pin "~{CS}" input (at 127 71.12 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid a8ef142b-15f8-4ee6-8cd7-dd3b6106dae9)
+    )
+    (pin "CLK" input (at 127 73.66 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid b26c16b3-cb58-4d8a-b764-2341b4c4bc23)
+    )
+    (pin "SD0" input (at 127 77.47 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 432c95e7-5b04-4a0d-bb9a-b1d7baf97f4c)
+    )
+    (pin "SD1" input (at 127 80.01 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 61c304cf-dce3-49b3-af97-35578d0968e0)
+    )
+    (pin "SD2" input (at 127 82.55 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid d0e28d09-b1b4-4f9c-85f4-ddd8bdbdd6bd)
+    )
+    (pin "SD3" input (at 127 85.09 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid b105506a-2f1e-466a-92ae-5a0260f6d0fa)
+    )
+    (pin "GND" input (at 127 88.9 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 2c34f1ec-243e-4d75-9454-5f3f8560ac02)
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+    (path "/00000000-0000-0000-0000-00005fe1f0a8" (page "2"))
+  )
+
+  (symbol_instances
+    (path "/00000000-0000-0000-0000-00005fe1f0a8/00000000-0000-0000-0000-00005fe1fa09"
+      (reference "C68") (unit 1) (value "100N") (footprint "Capacitor_SMD:C_0603_1608Metric")
+    )
+    (path "/00000000-0000-0000-0000-00005fe1f0a8/00000000-0000-0000-0000-00005fe1f737"
+      (reference "U7") (unit 1) (value "MT25QL128ABA1EW9") (footprint "william_storage:W-PDFN-8")
+    )
+  )
+)
