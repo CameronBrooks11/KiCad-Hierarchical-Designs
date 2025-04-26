@@ -1,4 +1,4 @@
-# Structure & Organization
+# Structure and Organization
 
 ## Naming Convention
 
