@@ -12,5 +12,3 @@ Many modules derived from: [williamweatherholtz/kicad_subs](https://github.com/w
 - [mfhepp/open_hardware_template](https://github.com/mfhepp/open_hardware_template)
 - [computergeek1507/KiCad_Designs](https://github.com/computergeek1507/KiCad_Designs)
 - [dbuchwald/kicad-simple](https://github.com/dbuchwald/kicad-simple)
-- [OJStuff/Schematics-Examples](https://github.com/OJStuff/Schematics-Examples)
-  - Simulations, maybe use as base to split off and create a dedicated Kicad-Simulation-Examples repo?
