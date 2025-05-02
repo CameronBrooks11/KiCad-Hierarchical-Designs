@@ -2,54 +2,56 @@
 
 ## Naming Convention
 
-The goal of this naming convention, although seemingly pedantic, is to balance **readability**, **reusability**, and **clarity** across schematic modules. The convention is designed to scale to many files without ambiguity while remaining human-readable in a flat or hierarchical folder structure.
+The goal of this naming convention, although seemingly pedantic, is to balance **readability**, **reusability**, and **clarity** across schematic modules. The convention is designed to scale to many files without ambiguity while remaining human-readable in both a previously hierarchical and now flattened folder structure.
 
 ### General Format
 
-`<main_part>_<role>[_<details>]`
+`<category>_<main_part>_<role>[_<details>]`
 
+- All filenames begin with a **category prefix** (e.g., `adc_`, `power_`, `digital_`) reflecting their original folder.
 - Use **lowercase** and **underscores** by default.
 - Underscores (`_`) represent **spaces**.
 - Dashes (`-`) represent **slashed relationships** or physical division (e.g., `vin-vout`, `tx-rx`, `spi-sd`).
 - **CamelCase is allowed** _only_ to:
-  - Distinguish unit designations or protocols clearly (e.g., `usbC`, `sdram32MiB`, etc.).
+  - Distinguish unit designations or protocols clearly (e.g., `usbC`, `sdram32MiB`, `vRefMid`).
   - Express meaning that would otherwise be ambiguous with underscores or dashes.
-- Acronyms (e.g., `adc`, `mcu`, `ldo`) should stay **lowercase** unless clarity is genuinely improved with mixed case (e.g., `sdram32MiB` instead of `sdram_32mib`).
+- Acronyms (e.g., `adc`, `mcu`, `ldo`) remain **lowercase**, unless clarity is improved with mixed case (e.g., `sdram32MiB` instead of `sdram_32mib`).
 
 ### Examples
 
-| File Name                          | Meaning                                 |
-| ---------------------------------- | --------------------------------------- |
-| `stm32f405_core.kicad_sch`         | STM32F405 microcontroller core          |
-| `usbC_interface.kicad_sch`         | USB-C interface connector or circuit    |
-| `fet_switch_nopd.kicad_sch`        | FET power switch without pulldown       |
-| `adc_diff_ads1220.kicad_sch`       | Differential ADC frontend using ADS1220 |
-| `sdram32MiB.kicad_sch`             | 32 MiB SDRAM module                     |
-| `voltage_divider_5v-3v3.kicad_sch` | Voltage divider from 5V to 3.3V         |
-| `tx-rx_level_shifter.kicad_sch`    | Level shifter between TX/RX lines       |
+| File Name                                       | Meaning                               |
+| ----------------------------------------------- | ------------------------------------- |
+| `microcontrollers_mcu_stm32f405_rgtx.kicad_sch` | STM32F405-based microcontroller core  |
+| `interface_usbC_interface.kicad_sch`            | USB-C interface connector or circuit  |
+| `power_fet_switch_nopd.kicad_sch`               | FET-based switch with no pulldown     |
+| `adc_diff_spi_ads1220.kicad_sch`                | Differential SPI ADC using ADS1220    |
+| `memory_sdram32MiB_module.kicad_sch`            | 32 MiB SDRAM memory module            |
+| `power_voltage_divider_5v-3v3.kicad_sch`        | Voltage divider from 5V to 3.3V       |
+| `digital_tx-rx_level_shifter.kicad_sch`         | Level shifter between TX and RX lines |
 
-### 📁 Folder Structure
+## 📁 Folder Layout
 
-- `/analog` — Analog frontends and signal conditioning modules.
-- `/digital` — Pure digital logic, GPIO expanders, display drivers, debounce, etc.
-- `/interface` — Communication interfaces (USB, UART, CAN, RS-232, SPI, etc.).
-- `/power` — Power supply circuits including regulators, converters, and switching elements.
-- `/sensors` — Sensor frontends including analog/digital interfaces for ADCs and sensor ICs.
-- `/microcontrollers` — Microcontroller cores, boot circuits, and supporting logic.
-- `/templates` — Example top-level project sheets using combinations of the above modules.
-- `/khd-master-lib.kicad_pro` — Top-level project file to manage and visualize all modules together.
+The design has been **flattened**: all schematic files now reside directly in the `kicad-hierarchical-designs/` directory, with the **category encoded as a prefix** in each filename.
 
-### 🔄 Expansion Plan
+| Category Prefix     | Description                                                    |
+| ------------------- | -------------------------------------------------------------- |
+| `adc_`              | ADCs for various signal types (RTD, thermocouple, diff, etc.)  |
+| `analog_`           | Analog frontends, filters, amplifiers, and signal conditioning |
+| `digital_`          | Digital logic, IO, displays, debounce, level shifting          |
+| `interface_`        | USB, UART, CAN, SPI, SD, transceivers, STLink, etc.            |
+| `memory_`           | EEPROMs, SDRAM, QSPI flash, and memory ICs                     |
+| `microcontrollers_` | MCU subsystems (STM32, ATmega, ESP32, etc.)                    |
+| `power_`            | Regulators, converters, protection, motor drivers, switches    |
+| `sensor_`           | Sensor frontends and interface ICs (IMUs, DHT, etc.)           |
 
-Each main folder may include subfolders in the future if needed:
+## 🔄 Expansion Plan
 
-- `analog/opamp/`, `analog/instrumentation/`
-- `digital/display_drivers/`, `digital/timers/`
-- `interface/wireless/`, `interface/usb/`
-- `power/dcdc/`, `power/linear/`, `power/protection/`
-- `sensors/temp/`, `sensors/accel_gyro/`
-- `microcontrollers/stm32/`, `microcontrollers/atmega/`, `microcontrollers/esp32/`
+If future reorganization or folder structure is needed, names can still be parsed based on prefixes. Possible subtyping through the third section of the filename can allow:
 
-### 🧩 Reuse
+- `power_ldo_...`, `power_dcdc_...`, `power_charger_...`
+- `interface_usb_...`, `interface_can_...`, `interface_uart_...`
+- `adc_diff_...`, `adc_rtd_...`, `adc_thermocouple_...`
 
-Each `.kicad_sch` file in this repository is intended to be imported as a hierarchical sheet into other KiCad projects using relative paths. All designs follow modular design conventions and are compatible with modern KiCad practices.
+## 🧩 Reuse
+
+Each `.kicad_sch` file in this repository is a **modular, reusable hierarchical sheet**, intended to be imported into other KiCad projects via **relative paths**. All designs conform to consistent naming and interface standards for ease of reuse and integration.
